@@ -12,28 +12,28 @@ contract BettingPlatform {
 
     // Struct representing a betting group
     struct Group {
-        uint256 betValue;   // The amount of ETH each participant must bet (in Wei)
-        uint256 matchId;    // Identifier linking the group to a specific match
-        uint8 maxParticipants; // Maximum number of participants allowed in the group
-        uint8 minParticipants; // Minimum number of participants required for the group to be valid (fixed at 2)
-        address creator;    // Address of the group creator
-        string password;    // Password to join the group
-        bool isActive;      // Boolean indicating whether the group is active
-        address[] participants; // List of addresses of participants
-        mapping(address => uint8) bets; // Mapping from participant addresses to their bets (1: home win, 0: draw, 2: away win)
-        mapping(address => bool) hasParticipated; // Mapping to track if an address has already joined the group
-        mapping(address => uint256) winnings; // Mapping from participant addresses to their winnings
+        uint256 betValue;                           // The amount of ETH each participant must bet (in Wei)
+        uint256 matchId;                            // Identifier linking the group to a specific match
+        uint8 maxParticipants;                      // Maximum number of participants allowed in the group
+        uint8 minParticipants;                      // Minimum number of participants required for the group to be valid (fixed at 2)
+        address creator;                            // Address of the group creator
+        string password;                            // Password to join the group
+        bool isActive;                              // Boolean indicating whether the group is active
+        address[] participants;                     // List of addresses of participants
+        mapping(address => uint8) bets;             // Mapping from participant addresses to their bets (1: home win, 0: draw, 2: away win)
+        mapping(address => bool) hasParticipated;   // Mapping to track if an address has already joined the group
+        mapping(address => uint256) winnings;       // Mapping from participant addresses to their winnings
     }
 
-    address public platformAccount;  // Address of the platform account for commission
-    address public owner;            // Address of the contract owner
-    uint256 public commissionPercentage = 50; // 0.5% commission (expressed as 50 basis points)
-    uint256 public constant BASIS_POINTS = 10000; // Basis points for percentage calculations
+    address public platformAccount;                 // Address of the platform account for commission
+    address public owner;                           // Address of the contract owner
+    uint256 public commissionPercentage = 50;       // 0.5% commission (expressed as 50 basis points)
+    uint256 public constant BASIS_POINTS = 10000;   // Basis points for percentage calculations
 
-    mapping(uint256 => Group) private groups; // Mapping from group ID to Group struct
-    mapping(uint256 => Match) public matches; // Mapping from match ID to Match struct
-    uint256 public groupCount; // Counter for group IDs
-    uint256 public matchCount; // Counter for match IDs
+    mapping(uint256 => Group) private groups;   // Mapping from group ID to Group struct
+    mapping(uint256 => Match) public matches;   // Mapping from match ID to Match struct
+    uint256 public groupCount;                  // Counter for group IDs
+    uint256 public matchCount;                  // Counter for match IDs
 
     // Events
     event MatchCreated(uint256 matchId, string homeTeam, string awayTeam, uint256 matchTime);
