@@ -87,3 +87,7 @@ Retrieves the list of participants in a betting group.
 ## Deployment
 
 BetTribe is currently deployed on the **Scroll Network (Sepolia Testnet)**.
+
+## Project Info
+
+This project submitted for **Scroll Bootcamp Cohort II**.
